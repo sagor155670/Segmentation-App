@@ -77,10 +77,12 @@ struct FinalTestView: View {
             })
             .onEnded { value in
                 finalScale *=  value
-                if finalScale < 1 {
-                    finalScale = 1.0
-                    offset  = .zero
-                    startOffset = .zero
+                withAnimation(Animation.easeInOut(duration: 0.3)) {
+                    if finalScale < 1 {
+                        finalScale = 1.0
+                        offset  = .zero
+                        startOffset = .zero
+                    }
                 }
                 ischanged = false
                 
@@ -184,60 +186,7 @@ struct FinalTestView: View {
                                                 print(ischanged)
                                                 
                                                 print("minX: \(rect.minX) minY: \(rect.minY)")
-                                                if !newValue{
-                                                    print("offwidth:\(offset.width) offheight:\(offset.height)")
-                                                    if rect.minX > 0{
-                                                        offset.width -= rect.minX
-                                                            //                                                            offset.width = 0
-                                                    }
-                                                    if rect.minY > 0 {
-                                                        offset.height -= rect.minY
-                                                            //                                                            offset.height = 0
-                                                    }
-                                                    if rect.maxX < size.width {
-                                                        offset.width = (rect.minX - offset.width)
-                                                    }
-                                                    if rect.maxY < size.height {
-                                                        offset.height = (rect.minY - offset.height)
-                                                    }
-                                                    if finalScale == 1{
-                                                        offset = .zero
-                                                    }
-                                                    
-                                                    startOffset = offset
-                                                    ischanged = true
-                                                    
-                                                }
-                                                print("offwidth:\(offset.width) offheight:\(offset.height)")
-
-                                            }
-                                    }
-                                }
-                                .scaleEffect(scale * finalScale)
-                                .offset(offset)
-                                .clipped()
-//                                .clipShape(Rectangle())
-                        }
-                        else{
-                            if ImageToShow != nil {
-                                Image(uiImage: ImageToShow!)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: UIScreen.main.bounds.height/2)
-                                    .border(Color.red, width: 3)
-                                    //                                    .position(location)
-                                    //                                    .clipShape(Rectangle())
-                                    .overlay{
-                                        GeometryReader{ proxy in
-                                            let rect = proxy.frame(in: .named("Rectangle"))
-                                            
-                                                //                                Text("width: \(rect.width) height: \(rect.height)")
-                                                //                                Text("minwidth: \(rect.minX) minheight: \(rect.minY)")
-                                            Color.clear
-                                                .onChange(of: ischanged) { newValue in
-                                                    print(ischanged)
-                                                    
-                                                    print("minX: \(rect.minX) minY: \(rect.minY)")
+                                                withAnimation(Animation.easeInOut(duration: 0.3)) {
                                                     if !newValue{
                                                         print("offwidth:\(offset.width) offheight:\(offset.height)")
                                                         if rect.minX > 0{
@@ -262,8 +211,66 @@ struct FinalTestView: View {
                                                         ischanged = true
                                                         
                                                     }
+                                                }
+                                                print("offwidth:\(offset.width) offheight:\(offset.height)")
+                                                
+                                            }
+                                    }
+                                }
+                                .scaleEffect(scale * finalScale)
+                                .offset(offset)
+                                .clipped()
+                                //                                .clipShape(Rectangle())
+                        }
+                        else{
+                            if ImageToShow != nil {
+                                Image(uiImage: ImageToShow!)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .frame(height: UIScreen.main.bounds.height/2)
+                                    .border(Color.red, width: 3)
+                                    //                                    .position(location)
+                                    //                                    .clipShape(Rectangle())
+                                    .overlay{
+                                        GeometryReader{ proxy in
+                                            let rect = proxy.frame(in: .named("Rectangle"))
+                                            
+                                                //                                Text("width: \(rect.width) height: \(rect.height)")
+                                                //                                Text("minwidth: \(rect.minX) minheight: \(rect.minY)")
+                                            Color.clear
+                                                .onChange(of: ischanged) { newValue in
+                                                    print(ischanged)
+                                                    
+                                                    print("minX: \(rect.minX) minY: \(rect.minY)")
+                                                    withAnimation(Animation.easeInOut(duration: 0.3)) {
+                                                        if !newValue{
+                                                            print("offwidth:\(offset.width) offheight:\(offset.height)")
+                                                            if rect.minX > 0{
+                                                                offset.width -= rect.minX
+                                                                    //                                                            offset.width = 0
+                                                            }
+                                                            if rect.minY > 0 {
+                                                                offset.height -= rect.minY
+                                                                    //                                                            offset.height = 0
+                                                            }
+                                                            if rect.maxX < size.width {
+                                                                offset.width = (rect.minX - offset.width)
+                                                            }
+                                                            if rect.maxY < size.height {
+                                                                offset.height = (rect.minY - offset.height)
+                                                            }
+                                                            if finalScale == 1{
+                                                                offset = .zero
+                                                            }
+                                                            
+                                                            startOffset = offset
+                                                            ischanged = true
+                                                            
+                                                        }
+                                                    }
+                                                    
                                                     print("offwidth:\(offset.width) offheight:\(offset.height)")
-
+                                                    
                                                 }
                                         }
                                     }
@@ -276,6 +283,7 @@ struct FinalTestView: View {
                                 Text("Tap image to show")
                                     .font(.callout)
                                     .fontWeight(.heavy)
+                                    .position(x: size.width/2 ,y: size.height/2)
                             }
                         }
                     }
