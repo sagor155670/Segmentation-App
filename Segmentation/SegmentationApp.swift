@@ -11,7 +11,12 @@ import SwiftUI
 struct SegmentationApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+//            TestSegment()
+//            NewTest()
+//            GestureView()
+//            GeometryView()
+            FinalTestView()
         }
     }
 }

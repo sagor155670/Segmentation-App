@@ -7,18 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1C2553FA2AF3A8AE0041AB61 /* GestureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C2553F92AF3A8AE0041AB61 /* GestureView.swift */; };
 		1C78C8AE2AEFB6A800B98B82 /* SegmentationApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C78C8AD2AEFB6A800B98B82 /* SegmentationApp.swift */; };
 		1C78C8B02AEFB6A800B98B82 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C78C8AF2AEFB6A800B98B82 /* ContentView.swift */; };
 		1C78C8B22AEFB6A900B98B82 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C78C8B12AEFB6A900B98B82 /* Assets.xcassets */; };
 		1C78C8B52AEFB6A900B98B82 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C78C8B42AEFB6A900B98B82 /* Preview Assets.xcassets */; };
+		1C78C8BC2AEFB79800B98B82 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C78C8BB2AEFB79800B98B82 /* ImagePicker.swift */; };
+		1C7FA40A2AF28BA000A6019D /* NewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C7FA4092AF28BA000A6019D /* NewTest.swift */; };
+		1CB3E4332AF52A6800C0358E /* GeometryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3E4322AF52A6800C0358E /* GeometryView.swift */; };
+		1CB3E4352AF5530800C0358E /* Final test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB3E4342AF5530800C0358E /* Final test.swift */; };
+		1CD75DEC2AF12D13000F2C7D /* TestSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CD75DEB2AF12D13000F2C7D /* TestSegment.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1C2553F92AF3A8AE0041AB61 /* GestureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureView.swift; sourceTree = "<group>"; };
 		1C78C8AA2AEFB6A800B98B82 /* Segmentation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Segmentation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C78C8AD2AEFB6A800B98B82 /* SegmentationApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentationApp.swift; sourceTree = "<group>"; };
 		1C78C8AF2AEFB6A800B98B82 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1C78C8B12AEFB6A900B98B82 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1C78C8B42AEFB6A900B98B82 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1C78C8BB2AEFB79800B98B82 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		1C78C8BD2AEFBF6000B98B82 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		1C7FA4092AF28BA000A6019D /* NewTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTest.swift; sourceTree = "<group>"; };
+		1CB3E4322AF52A6800C0358E /* GeometryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeometryView.swift; sourceTree = "<group>"; };
+		1CB3E4342AF5530800C0358E /* Final test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Final test.swift"; sourceTree = "<group>"; };
+		1CD75DEB2AF12D13000F2C7D /* TestSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestSegment.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,8 +64,15 @@
 		1C78C8AC2AEFB6A800B98B82 /* Segmentation */ = {
 			isa = PBXGroup;
 			children = (
+				1C78C8BD2AEFBF6000B98B82 /* Info.plist */,
 				1C78C8AD2AEFB6A800B98B82 /* SegmentationApp.swift */,
 				1C78C8AF2AEFB6A800B98B82 /* ContentView.swift */,
+				1C78C8BB2AEFB79800B98B82 /* ImagePicker.swift */,
+				1CD75DEB2AF12D13000F2C7D /* TestSegment.swift */,
+				1C2553F92AF3A8AE0041AB61 /* GestureView.swift */,
+				1C7FA4092AF28BA000A6019D /* NewTest.swift */,
+				1CB3E4322AF52A6800C0358E /* GeometryView.swift */,
+				1CB3E4342AF5530800C0358E /* Final test.swift */,
 				1C78C8B12AEFB6A900B98B82 /* Assets.xcassets */,
 				1C78C8B32AEFB6A900B98B82 /* Preview Content */,
 			);
@@ -137,8 +157,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1C78C8BC2AEFB79800B98B82 /* ImagePicker.swift in Sources */,
 				1C78C8B02AEFB6A800B98B82 /* ContentView.swift in Sources */,
+				1C2553FA2AF3A8AE0041AB61 /* GestureView.swift in Sources */,
 				1C78C8AE2AEFB6A800B98B82 /* SegmentationApp.swift in Sources */,
+				1CD75DEC2AF12D13000F2C7D /* TestSegment.swift in Sources */,
+				1CB3E4352AF5530800C0358E /* Final test.swift in Sources */,
+				1CB3E4332AF52A6800C0358E /* GeometryView.swift in Sources */,
+				1C7FA40A2AF28BA000A6019D /* NewTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,7 +221,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -249,7 +275,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -270,6 +296,8 @@
 				DEVELOPMENT_TEAM = 53WK73J5M9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Segmentation/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "we want to save your photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +327,8 @@
 				DEVELOPMENT_TEAM = 53WK73J5M9;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Segmentation/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "we want to save your photo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
