@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct FinalTestView: View {
+struct MainView: View {
     
     @State var isShowingPicker = false
     @State var selectedImage:UIImage?
@@ -19,36 +19,19 @@ struct FinalTestView: View {
     @State var alertTitle: String = ""
     @State var alertMessage: String = ""
     
-        //    @GestureState private var scale = CGFloat(1.0)
-        //    @State private var finalScale = CGFloat(1.0)
-        //    @State var dragOffset = CGSize.zero
-        //    @State var finalDragAmount = CGSize.zero
-        //    @State var isDragging:Bool = false
+    //for limiting border
     @State var ischanged: Bool = false
     
+    //for Dragging
     @State var startOffset: CGSize = CGSize(width: 0, height: 0)
     @State var offset: CGSize = CGSize(width: 0, height: 0)
     
-    
+    //for magnify
     @GestureState var scale = 1.0
     @State var finalScale = 1.0
     
-    @State private var location = CGPoint(x: 158, y: 225)//CGPoint(x: 160, y: 225)
-    @GestureState var startLocation:CGPoint? = nil
     
-        //        var simpleDrag: some Gesture {
-        //            DragGesture()
-        //                .onChanged { value in
-        //                    var newLocation = startLocation ?? location
-        //                    newLocation.x += value.translation.width
-        //                    newLocation.y += value.translation.height
-        //                    self.location = newLocation
-        //                }
-        //                .updating($startLocation) { value, startlocation, _ in
-        //                    startlocation = startlocation ?? location
-        //                }
-        //        }
-    
+    //Drag Gesture
     var Drag: some Gesture {
         DragGesture(minimumDistance: 0)
         
@@ -67,6 +50,7 @@ struct FinalTestView: View {
             }
     }
     
+    //Magnify Gesture
     var simpleMagnify: some Gesture {
         MagnificationGesture()
             .updating($scale) { currentState, gestureState, trans in
@@ -91,22 +75,7 @@ struct FinalTestView: View {
     
     var body: some View {
         VStack{
-            HStack{
-                Button {
-                    downloadButtonAction()
-                } label: {
-                    Text("Download ")
-                        .font(.callout)
-                        .fontWeight(.heavy)
-                }
-                Button {
-                    processButtonAction()
-                } label: {
-                    Text("Process")
-                        .font(.callout)
-                        .fontWeight(.heavy)
-                }
-            }
+            ButtonView
             VStack{
                 MediaPreviewer
             }
@@ -136,11 +105,7 @@ struct FinalTestView: View {
             ImageToShow = nil
             outputImageUrl = nil
             outputImage = nil
-            location = CGPoint(x: 158, y: 225)
-                //            isDragging = false
-                //            dragOffset = .zero
-                //            finalDragAmount = .zero
-                //            finalScale = 1.0
+           // if select new image it will set to scale 1 and fit to viewport
             offset = .zero
             startOffset = .zero
             finalScale = 1.0
@@ -149,14 +114,31 @@ struct FinalTestView: View {
         
     }
     
+   //viewBuilder Computed Property for Button Section
+    @ViewBuilder
+    var ButtonView: some View{
+        HStack{
+            Button {
+                downloadButtonAction()
+            } label: {
+                Text("Download ")
+                    .font(.callout)
+                    .fontWeight(.heavy)
+            }
+            Button {
+                processButtonAction()
+            } label: {
+                Text("Process")
+                    .font(.callout)
+                    .fontWeight(.heavy)
+            }
+        }
+    }
     
         //ViewBuilder Computed property for Main Previewer
     @ViewBuilder
     var MediaPreviewer: some View {
         ZStack{
-            Rectangle()
-                .strokeBorder(style: .init(lineWidth: 2))
-                .foregroundColor(Color.gray)
             
             VStack {
                 
@@ -172,9 +154,7 @@ struct FinalTestView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .frame(height: UIScreen.main.bounds.height/2)
-                                .border(Color.red, width: 3)
-                                .clipShape(Rectangle())
-                                //                                .position(location)
+//                                .border(Color.red, width: 3)
                                 .overlay{
                                     GeometryReader{ proxy in
                                         let rect = proxy.frame(in: .named("Rectangle"))
@@ -183,19 +163,17 @@ struct FinalTestView: View {
                                             //                                Text("minwidth: \(rect.minX) minheight: \(rect.minY)")
                                         Color.clear
                                             .onChange(of: ischanged) { newValue in
-                                                print(ischanged)
+//                                                print(ischanged)
                                                 
-                                                print("minX: \(rect.minX) minY: \(rect.minY)")
+//                                                print("minX: \(rect.minX) minY: \(rect.minY)")
                                                 withAnimation(Animation.easeInOut(duration: 0.3)) {
                                                     if !newValue{
-                                                        print("offwidth:\(offset.width) offheight:\(offset.height)")
+//                                                        print("offwidth:\(offset.width) offheight:\(offset.height)")
                                                         if rect.minX > 0{
                                                             offset.width -= rect.minX
-                                                                //                                                            offset.width = 0
                                                         }
                                                         if rect.minY > 0 {
                                                             offset.height -= rect.minY
-                                                                //                                                            offset.height = 0
                                                         }
                                                         if rect.maxX < size.width {
                                                             offset.width = (rect.minX - offset.width)
@@ -212,7 +190,7 @@ struct FinalTestView: View {
                                                         
                                                     }
                                                 }
-                                                print("offwidth:\(offset.width) offheight:\(offset.height)")
+//                                                print("offwidth:\(offset.width) offheight:\(offset.height)")
                                                 
                                             }
                                     }
@@ -220,7 +198,8 @@ struct FinalTestView: View {
                                 .scaleEffect(scale * finalScale)
                                 .offset(offset)
                                 .clipped()
-                                //                                .clipShape(Rectangle())
+                                .contentShape(Rectangle())
+
                         }
                         else{
                             if ImageToShow != nil {
@@ -228,9 +207,7 @@ struct FinalTestView: View {
                                     .resizable()
                                     .scaledToFit()
                                     .frame(height: UIScreen.main.bounds.height/2)
-                                    .border(Color.red, width: 3)
-                                    //                                    .position(location)
-                                    //                                    .clipShape(Rectangle())
+//                                    .border(Color.red, width: 3)
                                     .overlay{
                                         GeometryReader{ proxy in
                                             let rect = proxy.frame(in: .named("Rectangle"))
@@ -239,25 +216,27 @@ struct FinalTestView: View {
                                                 //                                Text("minwidth: \(rect.minX) minheight: \(rect.minY)")
                                             Color.clear
                                                 .onChange(of: ischanged) { newValue in
-                                                    print(ischanged)
+//                                                    print(ischanged)
                                                     
-                                                    print("minX: \(rect.minX) minY: \(rect.minY)")
+//                                                    print("minX: \(rect.minX) minY: \(rect.minY)")
                                                     withAnimation(Animation.easeInOut(duration: 0.3)) {
                                                         if !newValue{
-                                                            print("offwidth:\(offset.width) offheight:\(offset.height)")
+//                                                            print("offwidth:\(offset.width) offheight:\(offset.height)")
                                                             if rect.minX > 0{
                                                                 offset.width -= rect.minX
-                                                                    //                                                            offset.width = 0
                                                             }
                                                             if rect.minY > 0 {
                                                                 offset.height -= rect.minY
-                                                                    //                                                            offset.height = 0
                                                             }
                                                             if rect.maxX < size.width {
-                                                                offset.width = (rect.minX - offset.width)
+                                                                let dx = size.width - rect.maxX
+                                                                offset.width += dx
+//                                                                offset.width = (rect.minX - offset.width)
                                                             }
                                                             if rect.maxY < size.height {
-                                                                offset.height = (rect.minY - offset.height)
+                                                                let dy = size.height - rect.maxY
+                                                                offset.height += dy
+//                                                                offset.height = (rect.minY - offset.height)
                                                             }
                                                             if finalScale == 1{
                                                                 offset = .zero
@@ -269,7 +248,7 @@ struct FinalTestView: View {
                                                         }
                                                     }
                                                     
-                                                    print("offwidth:\(offset.width) offheight:\(offset.height)")
+//                                                    print("offwidth:\(offset.width) offheight:\(offset.height)")
                                                     
                                                 }
                                         }
@@ -277,6 +256,8 @@ struct FinalTestView: View {
                                     .scaleEffect(scale * finalScale)
                                     .offset(offset)
                                     .clipped()
+                                    .contentShape(Rectangle())
+                                    
                                 
                             }
                             else{
@@ -288,19 +269,20 @@ struct FinalTestView: View {
                         }
                     }
                 }
-                .border(Color.blue, width: 2)
+//                .border(Color.blue, width: 2)
                 .gesture(Drag.simultaneously(with: simpleMagnify))
                 .coordinateSpace(name: "Rectangle")
             }
+            Rectangle()
+                .strokeBorder(style: .init(lineWidth: 2))
+                .foregroundColor(Color.gray)
             
         }
         
         
         
     }
-    func changing() {
-        finalScale = 1.0
-    }
+
     
         //ViewBuilder Computed property for Input Previewer
     @ViewBuilder

@@ -16,7 +16,7 @@ struct SegmentationApp: App {
 //            NewTest()
 //            GestureView()
 //            GeometryView()
-            FinalTestView()
+              MainView() // The Final Segmentation App View
         }
     }
 }
