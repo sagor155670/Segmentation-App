@@ -67,12 +67,8 @@
 				1C78C8BD2AEFBF6000B98B82 /* Info.plist */,
 				1C78C8AD2AEFB6A800B98B82 /* SegmentationApp.swift */,
 				1CB3E4342AF5530800C0358E /* MainView.swift */,
-				1C78C8AF2AEFB6A800B98B82 /* ContentView.swift */,
 				1C78C8BB2AEFB79800B98B82 /* ImagePicker.swift */,
-				1CD75DEB2AF12D13000F2C7D /* TestSegment.swift */,
-				1C2553F92AF3A8AE0041AB61 /* GestureView.swift */,
-				1C7FA4092AF28BA000A6019D /* NewTest.swift */,
-				1CB3E4322AF52A6800C0358E /* GeometryView.swift */,
+				1CD2D5282AF75D270020DB5D /* Testing */,
 				1C78C8B12AEFB6A900B98B82 /* Assets.xcassets */,
 				1C78C8B32AEFB6A900B98B82 /* Preview Content */,
 			);
@@ -85,6 +81,18 @@
 				1C78C8B42AEFB6A900B98B82 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1CD2D5282AF75D270020DB5D /* Testing */ = {
+			isa = PBXGroup;
+			children = (
+				1C78C8AF2AEFB6A800B98B82 /* ContentView.swift */,
+				1CD75DEB2AF12D13000F2C7D /* TestSegment.swift */,
+				1C2553F92AF3A8AE0041AB61 /* GestureView.swift */,
+				1CB3E4322AF52A6800C0358E /* GeometryView.swift */,
+				1C7FA4092AF28BA000A6019D /* NewTest.swift */,
+			);
+			path = Testing;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
